@@ -27,8 +27,6 @@ services:
       - "80:80"
     depends_on:
       - backend
-    environment:
-      VITE_SERVER_URL: http://localhost:3000/api
 
   dbpostgres:
     image: postgres

@@ -9,7 +9,7 @@ export interface Product {
 }
 
 const ITEMS_PER_PAGE = 5;
-const API_URL = import.meta.env.VITE_SERVER_URL;
+const API_URL = "http://localhost:3000/api";
 
 export function useProducts() {
 	const [products, setProducts] = useState<Product[]>([]);
