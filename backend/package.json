@@ -1,0 +1,36 @@
+{
+	"name": "div",
+	"version": "0.0.1",
+	"description": "Awesome project developed with TypeORM.",
+	"type": "commonjs",
+	"devDependencies": {
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.3",
+		"@types/node": "^16.18.126",
+		"ts-node": "10.9.2",
+		"typeorm-ts-node-commonjs": "^0.3.20",
+		"typescript": "^5.9.2"
+	},
+	"dependencies": {
+		"concurrently": "^9.2.0",
+		"cors": "^2.8.5",
+		"dotenv": "^17.2.1",
+		"express": "^4.21.2",
+		"nodemon": "^3.1.10",
+		"pg": "^8.16.3",
+		"reflect-metadata": "^0.1.14",
+		"rimraf": "^5.0.10",
+		"typeorm": "0.3.25",
+		"zod": "^4.0.17"
+	},
+	"scripts": {
+		"dev": "nodemon src/index.ts",
+		"build": "rimraf build && concurrently \"tsc\"",
+		"build2": "tsc -p tsconfig.json",
+		"start": "node build/index.js",
+		"migration:generate": "typeorm-ts-node-commonjs -d src/data-source.ts migration:generate src/migration/auto",
+		"migration:run": "typeorm-ts-node-commonjs -d src/data-source.ts migration:run",
+		"seed": "ts-node src/seed/seed.ts",
+		"docker:init": "npm run migration:generate && npm run migration:run && npm run seed "
+	}
+}
